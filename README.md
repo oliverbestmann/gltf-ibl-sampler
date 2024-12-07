@@ -25,11 +25,11 @@ Usage
 In bevy you need the specular map of an hdr:
 
 ```
-nix run .# -- -inputPath fancy_hdr_image.hdr -outCubeMap nice_bevy_cubemap_diffuse.ktx2 -distribution Lambertian -sampleCount 1024 -targetFormat R16G16B16A16_SFLOA
+nix run "git+https://codeberg.org/grindhold/glTF-IBL-Sampler-flake" -- -inputPath fancy_hdr_image.hdr -outCubeMap nice_bevy_cubemap_diffuse.ktx2 -distribution Lambertian -sampleCount 1024 -targetFormat R16G16B16A16_SFLOA
 ```
 
 ```
-nix run .# -- -inputPath fancy_hdr_image.hdr -outCubeMap nice_bevy_cubemap_specular.ktx2 -distribution GGX -sampleCount 1024 -targetFormat R16G16B16A16_SFLOAT
+nix run "git+https://codeberg.org/grindhold/glTF-IBL-Sampler-flake" -- -inputPath fancy_hdr_image.hdr -outCubeMap nice_bevy_cubemap_specular.ktx2 -distribution GGX -sampleCount 1024 -targetFormat R16G16B16A16_SFLOAT
 ```
 
 Then move your resulting `nice_bevy_cubemap_specular.ktx2` and `nice_bevy_cubemap_diffuse.ktx2` to your bevy application's asset folder.
