@@ -20,6 +20,10 @@
         hash="sha256-ErS+5rSO91b4+8Gg9Ta6W/juA7jqND8ioBbOSVUJwrE=";
       };
 
+      patches = [
+        ./0001-nix-patch-to-use-nixpkgs-ktx.patch
+      ];
+
       nativeBuildInputs = [
         cmake
         gcc
