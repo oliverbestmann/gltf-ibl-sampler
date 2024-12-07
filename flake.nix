@@ -21,8 +21,13 @@
       };
 
       patches = [
-        ./0001-nix-patch-to-use-nixpkgs-ktx.patch
+        ./0001-nix-use-ktx-tools-from-nixpkgs.patch
       ];
+
+      preBuild = ''
+      rm -rf thirdparty/KTX-Software
+      rm thirdparty/KTX-Software.cmake
+      '';
 
       nativeBuildInputs = [
         cmake

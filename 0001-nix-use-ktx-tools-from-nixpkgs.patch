@@ -1,0 +1,51 @@
+From 5dcbdf8bb5422b73b9b45ecb2bc6835b0155c087 Mon Sep 17 00:00:00 2001
+From: grindhold <grindhold@gmx.net>
+Date: Sat, 7 Dec 2024 15:30:39 +0100
+Subject: [PATCH] nix: use ktx-tools from nixpkgs
+
+---
+ CMakeLists.txt                | 3 +--
+ lib/source/ShaderCompiler.cpp | 6 +++---
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0b22aaa..e6c169e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -113,8 +113,7 @@ target_link_libraries(GltfIblSampler PRIVATE glslang SPIRV)
+ target_link_libraries(GltfIblSampler PRIVATE Vulkan::Vulkan)
+ 
+ # libktx
+-include(thirdparty/KTX-Software.cmake)
+-target_link_libraries(GltfIblSampler PRIVATE Ktx::ktx)
++target_link_libraries(GltfIblSampler PUBLIC ktx)
+ 
+ #cli project
+ add_sources("cli/source/*.cpp" "cli_sources")
+diff --git a/lib/source/ShaderCompiler.cpp b/lib/source/ShaderCompiler.cpp
+index ef2650a..0778220 100644
+--- a/lib/source/ShaderCompiler.cpp
++++ b/lib/source/ShaderCompiler.cpp
+@@ -131,8 +131,8 @@ bool IBLLib::ShaderCompiler::compile(const std::string& _glslBlob, const char* _
+ 
+ 	if (shader.parse(&DefaultTBuiltInResource, 450, false, EShMsgDefault) == false)
+ 	{
+-		printf(shader.getInfoDebugLog());
+-		printf(shader.getInfoLog());
++		printf("%s\n",shader.getInfoDebugLog());
++		printf("%s\n",shader.getInfoLog());
+ 		return false;
+ 	}
+ 
+@@ -160,7 +160,7 @@ bool IBLLib::ShaderCompiler::compile(const std::string& _glslBlob, const char* _
+ 
+ 	glslang::GlslangToSpv(*pIntermediate, _outSpvBlob, &logger, &spvOptions);
+ 
+-	printf(logger.getAllMessages().c_str());
++	printf("%s\n",logger.getAllMessages().c_str());
+ 
+ 	return true;
+ }
+-- 
+2.47.0
+
