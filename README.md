@@ -37,7 +37,7 @@ Add the following to your camera3d-entity:
 
 ```
 Skybox {
-    image: asset_server.load("nice_bevy_cubemap_specular.ktx"),
+    image: asset_server.load("nice_bevy_cubemap_specular.ktx2"),
     brightness: 1000.0,
 }
 ```
