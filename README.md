@@ -20,6 +20,7 @@ This patch esentially
 And that being done it runs on nixos.
 
 Usage
+-----
 
 In bevy you need the specular map of an hdr:
 
@@ -42,3 +43,8 @@ Skybox {
 ```
 
 Enjoy the view.
+
+Upstream
+--------
+
+The original project can be found at [https://github.com/KhronosGroup/glTF-IBL-Sampler](https://github.com/KhronosGroup/glTF-IBL-Sampler)
