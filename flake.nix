@@ -25,17 +25,12 @@
       ];
 
       preBuild = ''
-      rm -rf thirdparty/KTX-Software
-      rm thirdparty/KTX-Software.cmake
+        rm -rf thirdparty/KTX-Software
       '';
 
       nativeBuildInputs = [
         cmake
         gcc
-
-        shaderc
-        glslang
-        glslang.dev
       ];
 
       buildInputs = [
@@ -58,7 +53,10 @@
       };
     };
 
-
+    apps.x86_64-linux.default = {
+      type = "app";
+      program = "${self.packages.x86_64-linux.default}/bin/cli";
+    };
 
     devShell.x86_64-linux =
       with import nixpkgs {inherit system;};
