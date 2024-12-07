@@ -17,7 +17,7 @@
         repo = "glTF-IBL-Sampler";
         rev = "08fa12250f6f5f5969c1846aaa266e6eea887731";
         fetchSubmodules = true;
-        hash="sha256-ErS+5rSO91b4+8Gg9Ta6W/juA7jqND8ioBbOSVUJwrE=";
+        hash="sha256-6yvl55ESLNwgxDcpQoiA3+186nx94uw3vb9WO7DKzvw=";
       };
 
       patches = [
@@ -32,6 +32,10 @@
       nativeBuildInputs = [
         cmake
         gcc
+
+        shaderc
+        glslang
+        glslang.dev
       ];
 
       buildInputs = [
